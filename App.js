@@ -1,11 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoaded: false
+    };
+  }
+
   render() {
+    const { isLoaded } = this.state;
+
     return (
       <View style={styles.container}>
-        <Text>I'm Jeffrey from Seoul, Korea!</Text>
+        {
+          isLoaded ?
+            null
+            :
+            <View style={styles.loading}>
+              <Text style={styles.loadingText}>Getting the weather</Text>
+            </View>
+        }
       </View>
     );
   }
@@ -14,8 +30,20 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff'
   },
+  first: {
+    flex: 1,
+    backgroundColor: 'green'
+  },
+  loading: {
+    flex: 1,
+    backgroundColor: '#FDF6AA',
+    justifyContent: 'flex-end',
+    paddingLeft: 25
+  },
+  loadingText: {
+    fontSize: 30,
+    marginBottom: 100
+  }
 });
