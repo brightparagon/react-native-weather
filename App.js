@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import Weather from './Weather';
 
-const API_KEY = '85650bec2f0301ea0a49b491f2136555';
+const API_KEY = '';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { isLoaded, error, temperature } = this.state;
+    const { isLoaded, error, temperature, name } = this.state;
 
     return (
       <View style={styles.container}>
@@ -39,6 +39,7 @@ export default class App extends React.Component {
         {
           isLoaded ?
             <Weather
+              weatherName={name}
               temperature={Math.floor(temperature - 273.15)}
             />
             :
